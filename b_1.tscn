@@ -1,0 +1,1202 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgo5ymnb8fgqb"]
+
+[ext_resource type="Texture2D" uid="uid://bdf0xl7r38uj4" path="res://invbricks.png" id="1_784xi"]
+[ext_resource type="Texture2D" uid="uid://cfrppa6pq1hiu" path="res://invbrick_N.png" id="2_hbcl4"]
+[ext_resource type="Material" uid="uid://ci7td80yj7guh" path="res://brickmaterial.tres" id="3_hbcl4"]
+[ext_resource type="Material" uid="uid://ceect8hlc30o3" path="res://wood.tres" id="4_1h0gv"]
+[ext_resource type="Material" uid="uid://diiyb0k2xp0l8" path="res://planks.tres" id="5_vtbkv"]
+[ext_resource type="Script" uid="uid://byk65mcppcu5c" path="res://window.gd" id="6_xcmcw"]
+[ext_resource type="AudioStream" uid="uid://cereu3dl04uxx" path="res://breaking-glass-84819.mp3" id="7_ja78s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h0gv"]
+albedo_color = Color(0.496818, 0.430993, 0.357164, 1)
+albedo_texture = ExtResource("1_784xi")
+metallic_specular = 0.2
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_hbcl4")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_784xi"]
+albedo_color = Color(0.165656, 0.165656, 0.165656, 1)
+albedo_texture = ExtResource("1_784xi")
+metallic_specular = 0.2
+roughness = 0.8
+normal_texture = ExtResource("2_hbcl4")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbcl4"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtbkv"]
+transparency = 1
+albedo_color = Color(0.784314, 0.796078, 1, 0.192157)
+metallic_specular = 1.0
+roughness = 0.0
+disable_receive_shadows = true
+
+[node name="B1" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 3.8, 0)
+size = Vector3(15, 0.1, 10)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, -3.55)
+operation = 2
+size = Vector3(8, 1, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="floor" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
+size = Vector3(10, 0.6, 10)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="floor3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9, -0.88772, 2.1)
+size = Vector3(0.2, 0.375439, 1.4)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="floor4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, -0.6, 2.1)
+size = Vector3(0.2, 0.2, 1.4)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="floor5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.4, 2.1)
+size = Vector3(0.2, 0.2, 1.4)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="floor6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, -0.2, 2.1)
+size = Vector3(0.4, 0.2, 1.4)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="floor2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.75, 0)
+size = Vector3(10, 0.1, 10)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="1mid" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, -5.1)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/1mid"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.1, 0)
+operation = 2
+size = Vector3(1.8, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="1mid2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.1, 5.9, 2.98023e-07)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/1mid2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0999999, 0.291504)
+operation = 2
+size = Vector3(2, 2, 0.916992)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="doorwall" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.9, 5.9, 2.98023e-07)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/doorwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/doorwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.7, 0)
+operation = 2
+size = Vector3(1.25, 2.6, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="doorwall2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.9, 1.9, 2.98023e-07)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/doorwall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, -0.65, 0)
+operation = 2
+size = Vector3(1.25, 2.7, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="2side" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 5.1)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/2side"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/2side"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="2side2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, 5.1)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/2side2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/2side2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="2side3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9, -5.1)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/2side3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D/2side3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75, 0.1, 0)
+operation = 2
+size = Vector3(2, 2, 1.5)
+material = SubResource("StandardMaterial3D_784xi")
+
+[node name="0wall" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.1, 1.9, 0)
+size = Vector3(10, 4, 0.2)
+material = SubResource("StandardMaterial3D_1h0gv")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.9, -5.2)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3.9, 5.2)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.9, 5.2)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 3.9, 5)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 3.9, -5)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.9, -5.2)
+radius = 0.1
+height = 8.0
+sides = 6
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04751, 0.15, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80555, 0.35, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57259, 0.35, -3.55)
+size = Vector3(1, 0.6, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33667, 0.75, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08546, 0.95, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.859335, 0.65, -3.55)
+size = Vector3(1, 1.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.626302, 0.75, -3.55)
+size = Vector3(1, 1.4, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.379054, 1.55, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139821, 1.75, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109737, 1.95, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.329873, 1.15, -3.55)
+size = Vector3(1, 2.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.575699, 1.25, -3.55)
+size = Vector3(1, 2.4, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.805423, 2.55, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05012, 2.75, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28938, 2.95, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52959, 1.65, -3.55)
+size = Vector3(1, 3.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75973, 3.35, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99185, 3.55, -3.55)
+size = Vector3(1, 0.2, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35, 1.95, -3.55)
+size = Vector3(3.3, 3.8, 2.9)
+material = ExtResource("3_hbcl4")
+
+[node name="slope" type="CSGBox3D" parent="."]
+transform = Transform3D(0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 0, 0, 1, -0.645, 1.883, -3.549)
+calculate_tangents = false
+use_collision = true
+size = Vector3(0.001, 6.12, 2.9)
+material = SubResource("StandardMaterial3D_hbcl4")
+
+[node name="slope2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.642788, 0.766045, 0, -0.766045, 0.642788, 0, 0, 0, 1, -5.92719, -0.542713, 2.101)
+calculate_tangents = false
+use_collision = true
+size = Vector3(0.001, 1.37283, 1.4)
+material = SubResource("StandardMaterial3D_hbcl4")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999999, -0.672424, 0)
+size = Vector3(10.4, 1.25515, 10.6)
+material = ExtResource("5_vtbkv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D2/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 2.1)
+operation = 2
+size = Vector3(1, 1, 1.4)
+material = ExtResource("4_1h0gv")
+
+[node name="in" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7, 3.4, -4.9)
+size = Vector3(0.4, 8.6, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45, 4.75, -4.8)
+size = Vector3(4.9, 0.1, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45, 4.75, 4.8)
+size = Vector3(4.9, 0.1, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 4.75, -2.38419e-07)
+size = Vector3(0.2, 0.1, 9.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail4" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 5.05, 2.38419e-07)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail21" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 5.05, -1.75)
+size = Vector3(0.4, 0.1, 6.5)
+material = ExtResource("5_vtbkv")
+
+[node name="rail22" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 6.95, 1.19209e-07)
+size = Vector3(0.4, 0.1, 10.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail28" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 7.95, 1.19209e-07)
+size = Vector3(0.4, 0.1, 10.6)
+material = ExtResource("5_vtbkv")
+
+[node name="rail29" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 7.95, 1.19209e-07)
+size = Vector3(0.4, 0.1, 10.6)
+material = ExtResource("5_vtbkv")
+
+[node name="rail30" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999994, 7.95, 5.1)
+size = Vector3(9.6, 0.1, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail31" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0999994, 7.95, -5.1)
+size = Vector3(9.6, 0.1, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail27" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 3.85738, 1.19209e-07)
+size = Vector3(0.4, 0.114771, 10.4)
+material = ExtResource("5_vtbkv")
+
+[node name="rail5" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 6.95, 2.38419e-07)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail14" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 1.05, 2.38419e-07)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail15" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 2.95, 2.38419e-07)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail16" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.05, -1.75)
+size = Vector3(0.4, 0.1, 6.5)
+material = ExtResource("5_vtbkv")
+
+[node name="rail18" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.2, 1.5)
+size = Vector3(0.4, 2.6, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail19" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.2, 2.8)
+size = Vector3(0.4, 2.6, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail20" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 1.05, 3.95)
+size = Vector3(0.4, 0.1, 2.5)
+material = ExtResource("5_vtbkv")
+
+[node name="rail23" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 5.15, 1.5)
+size = Vector3(0.4, 2.5, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail24" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 5.15, 2.8)
+size = Vector3(0.4, 2.5, 0.2)
+material = ExtResource("5_vtbkv")
+
+[node name="rail25" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 4.95, 3.95)
+size = Vector3(0.4, 0.1, 2.5)
+material = ExtResource("5_vtbkv")
+
+[node name="rail17" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 2.55, 2.38419e-07)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail26" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9, 6.45, 3.2)
+size = Vector3(0.4, 0.1, 3.6)
+material = ExtResource("5_vtbkv")
+
+[node name="rail6" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 5.05, 5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail7" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 6.95, 5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail8" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 5.05, -5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail9" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 6.95, -5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail10" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 1.05, -5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail11" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 2.95, -5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail12" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 1.05, 5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="rail13" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0999994, 2.95, 5.1)
+size = Vector3(0.4, 0.1, 10)
+material = ExtResource("5_vtbkv")
+
+[node name="in2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.4, -4.9)
+size = Vector3(0.4, 8.6, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="in3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.4, 4.8)
+size = Vector3(0.4, 8.6, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="in4" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 3.4, 4.8)
+size = Vector3(0.4, 8.6, 0.4)
+material = ExtResource("5_vtbkv")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55, -0.6, 1.25)
+size = Vector3(1.1, 1, 0.3)
+material = ExtResource("5_vtbkv")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55, -0.6, 2.95)
+size = Vector3(1.1, 1, 0.3)
+material = ExtResource("5_vtbkv")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 4.3, 4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 4.3, 4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 4.3, 4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 4.3, 4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 4.3, 4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 4.3, -4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 1.3, -4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.8, 1.3, 4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1.3, -4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3, 1.3, 4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 1.3, -4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 1.3, 4.8)
+radius = 0.1
+height = 5.0
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8, 4.3, -4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 4.3, -4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 4.3, -4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 4.3, -4.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, 0.2)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, -0.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, -1.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, -2.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, -3.8)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, 4.2)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, 3.2)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, 2.2)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="CSGCombiner3D2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.8, 4.3, 1.2)
+radius = 0.075
+height = 0.9
+material = ExtResource("4_1h0gv")
+
+[node name="wewindows" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.06081, 5.1, 0)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows2" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.76081, 5.1, 5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows3" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.73919, 5.1, 5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows8" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.76081, 1.1, 5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows9" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.73919, 1.1, 5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows4" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.73919, 5.1, -5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows7" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 0.9, 0, 1, 0, -1, 0, -3.93403e-08, -3.03919, 1.1, -5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows5" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.76081, 5.1, -5.1)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="wewindows6" type="CSGCombiner3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.93919, 5.1, -2.4)
+use_collision = true
+script = ExtResource("6_xcmcw")
+
+[node name="bot1" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="bot2" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top1" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0999999, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="top2" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.8, 0)
+size = Vector3(0.1, 0.1, 2.4)
+material = ExtResource("5_vtbkv")
+
+[node name="side1" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side2" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, 1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side3" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0999999, 0.900001, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="side4" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.1, 0.9, -1)
+size = Vector3(0.1, 0.1, 1.8)
+material = ExtResource("5_vtbkv")
+
+[node name="glass" type="CSGBox3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00243568, 0.9, 0.00836176)
+size = Vector3(0.0889648, 1.8, 1.92151)
+material = SubResource("StandardMaterial3D_vtbkv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="wewindows6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+stream = ExtResource("7_ja78s")
+volume_db = -20.0
+pitch_scale = 1.1
+attenuation_filter_cutoff_hz = 20500.0

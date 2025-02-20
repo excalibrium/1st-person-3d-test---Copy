@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://2j572gucobgw"]
+
+[ext_resource type="Script" uid="uid://dhctxev4b8su6" path="res://player/item.gd" id="1_tnite"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tnite"]
+viewport_path = NodePath("Model/SubViewport")
+
+[sub_resource type="BoxMesh" id="BoxMesh_tnite"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="SphereMesh" id="SphereMesh_tnite"]
+radius = 0.02
+height = 0.04
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tnite"]
+radius = 0.1
+
+[node name="ITEM1" type="Node3D" node_paths=PackedStringArray("looker", "hitbox", "model")]
+script = ExtResource("1_tnite")
+ability_name = "gun"
+main_type = "nan"
+looker = NodePath("Model/lkr")
+hitbox = NodePath("Area")
+Type = "nan2"
+model = NodePath("Model")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="lkr" type="Node3D" parent="Model"]
+
+[node name="Sprite3D" type="Sprite3D" parent="Model"]
+transform = Transform3D(-0.1, 0, 8.74228e-09, 0, 0.1, 0, -8.74228e-09, 0, -0.1, 0, 0.1, 0)
+cast_shadow = 0
+alpha_cut = 1
+alpha_antialiasing_mode = 1
+texture_filter = 5
+texture = SubResource("ViewportTexture_tnite")
+
+[node name="SubViewport" type="SubViewport" parent="Model"]
+transparent_bg = true
+scaling_3d_scale = 1.0
+
+[node name="Label" type="Label" parent="Model/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -233.0
+offset_top = -68.5
+offset_right = 233.0
+offset_bottom = 68.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "item
+"
+horizontal_alignment = 1
+
+[node name="mesh" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("BoxMesh_tnite")
+
+[node name="real_mesh" type="MeshInstance3D" parent="Model/mesh"]
+mesh = SubResource("SphereMesh_tnite")
+
+[node name="Area" type="Area3D" parent="." groups=["Menutton"]]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
+shape = SubResource("SphereShape3D_tnite")
+
+[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
+[connection signal="area_exited" from="Area" to="." method="_on_area_area_exited"]

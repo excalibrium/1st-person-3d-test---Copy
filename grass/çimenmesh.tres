@@ -1,0 +1,51 @@
+[gd_resource type="ArrayMesh" load_steps=5 format=4 uid="uid://bwelkgdknt2pw"]
+
+[ext_resource type="Shader" path="res://models/grass/grass.gdshader" id="1_hnpd1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gb1hy"]
+frequency = 0.02
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b5upe"]
+in_3d_space = true
+seamless = true
+noise = SubResource("FastNoiseLite_gb1hy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3jhad"]
+render_priority = 0
+shader = ExtResource("1_hnpd1")
+shader_parameter/top_color = null
+shader_parameter/bottom_color = null
+shader_parameter/yellow_color = Color(1, 0.9, 0.2, 1)
+shader_parameter/yellow_threshold = 0.8
+shader_parameter/yellow_intensity = 0.5
+shader_parameter/tall_grass_threshold = 0.7
+shader_parameter/player_displacement_strength = 0.4
+shader_parameter/player_displacement_size = 1.0
+shader_parameter/wind_direction = Vector3(1, 0, -1)
+shader_parameter/wind_strength = 0.3
+shader_parameter/global_noise_size = 0.05
+shader_parameter/global_noise_speed = 0.1
+shader_parameter/player_position = null
+shader_parameter/vertical_displacement_strength = 0.1
+shader_parameter/simplex_noise_size = 0.1
+shader_parameter/grass_height_scale = 1.5
+shader_parameter/grass_width_scale = 0.7
+shader_parameter/global_noise = SubResource("NoiseTexture2D_b5upe")
+shader_parameter/simplex_noise = SubResource("NoiseTexture2D_b5upe")
+
+[resource]
+_surfaces = [{
+"aabb": AABB(-0.25103, 0, 0, 0.50206, 2, 1e-05),
+"attribute_data": PackedByteArray("//+ZmQAAmZn//wAAAAAAAP////8AAP//"),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAAAAAAFAAEA"),
+"material": SubResource("ShaderMaterial_3jhad"),
+"name": "Plane",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray("zMxmZgAAAIAzM2ZmAAAAgP9///8AAACA/3///wAA/n///wAAAAAAgAAAAAAAAACA/3////9/////f////3////9/////f///")
+}]
+blend_shape_mode = 0

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ci7td80yj7guh"]
+
+[ext_resource type="Texture2D" uid="uid://bdf0xl7r38uj4" path="res://invbricks.png" id="1_hjj83"]
+[ext_resource type="Texture2D" uid="uid://cfrppa6pq1hiu" path="res://invbrick_N.png" id="2_jde81"]
+
+[resource]
+albedo_color = Color(0.273873, 0.273873, 0.273873, 1)
+albedo_texture = ExtResource("1_hjj83")
+metallic_specular = 0.2
+roughness = 0.8
+normal_enabled = true
+normal_texture = ExtResource("2_jde81")
+uv1_triplanar = true
