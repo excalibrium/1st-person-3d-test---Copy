@@ -29,9 +29,11 @@ const JOY_DEADZONE : float = 0.15
 const JOY_V_SENS : float = 0.5
 const JOY_H_SENS : float = 0.5
 var camera_velocity := Vector3.ZERO
+@export var animation_player : AnimationPlayer
 func _ready():
 	player = get_tree().get_nodes_in_group("Player")[0]
-
+	if animation_player:
+		animation_player.play("started")
 func _process(delta: float) -> void:
 	Mcursor.look_at(global_position)
 	Mray.look_at(Mcursor.global_position)

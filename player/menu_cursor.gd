@@ -30,8 +30,8 @@ func _process(_delta):
 		if get_parent().in_menu == true or get_parent().in_ingame_menu == true:
 			position.x = lerp(position.x, mousePosX, 0.1)
 			position.y = lerp(position.y, mousePosY, 0.1)
-			position.x = position.x/10.0 * %MenuCursorSlot.global_position.distance_squared_to(get_parent().global_position)
-			position.y = position.y/10.0 * %MenuCursorSlot.global_position.distance_squared_to(get_parent().global_position)
+			position.x = position.x/8.0 * %MenuCursorSlot.global_position.distance_squared_to(get_parent().global_position)
+			position.y = position.y/8.0 * %MenuCursorSlot.global_position.distance_squared_to(get_parent().global_position)
 func _input(event):
 
 	if Input.is_action_just_pressed("shoot"):

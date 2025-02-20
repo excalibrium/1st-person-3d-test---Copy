@@ -15,7 +15,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="brackey jam test"
-run/main_scene="uid://lo0tqdk8m5fe"
+run/main_scene="uid://ddsb7vaemql4p"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

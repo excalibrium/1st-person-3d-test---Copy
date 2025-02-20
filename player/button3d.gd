@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var animation_player : AnimationPlayer
 @export var ingame_ui : Node3D
 @export var main_type: String
 @export var looker: Node3D
@@ -33,7 +34,7 @@ func _input(event: InputEvent) -> void:
 		
 func _physics_process(_delta):
 	update_vis()
-	model.look_at(cursor.get_parent().global_position)
+	#model.look_at(cursor.get_parent().global_position)
 	if cursor.main_type == main_type or cursor.get_parent().in_menu == false:
 		if visible == true:
 			looker.global_position = global_position
@@ -52,6 +53,9 @@ func _physics_process(_delta):
 func pressed(Type):
 	print("entering ", Type)
 	match Type:
+		"Begin":
+			animation_player.play("starting")
+			cursor.get_parent().in_menu = false
 		"Quitting":
 			get_tree().quit()
 		"Continue":
