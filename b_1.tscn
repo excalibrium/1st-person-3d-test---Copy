@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgo5ymnb8fgqb"]
+[gd_scene load_steps=13 format=3 uid="uid://bgo5ymnb8fgqb"]
 
 [ext_resource type="Texture2D" uid="uid://bdf0xl7r38uj4" path="res://invbricks.png" id="1_784xi"]
 [ext_resource type="Texture2D" uid="uid://cfrppa6pq1hiu" path="res://invbrick_N.png" id="2_hbcl4"]
@@ -35,6 +35,9 @@ albedo_color = Color(0.784314, 0.796078, 1, 0.192157)
 metallic_specular = 1.0
 roughness = 0.0
 disable_receive_shadows = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ja78s"]
+points = PackedVector3Array(0, 0, 0, 0, 0, -10, 10, 0, 0, 10, 0, -10, 0, 7.8, 0, 0, 7.8, -10, 10, 7.8, 0, 10, 7.8, -10)
 
 [node name="B1" type="Node3D"]
 
@@ -1200,3 +1203,9 @@ stream = ExtResource("7_ja78s")
 volume_db = -20.0
 pitch_scale = 1.1
 attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84074, -2.23517e-08, 5.1)
+shape = SubResource("ConvexPolygonShape3D_ja78s")

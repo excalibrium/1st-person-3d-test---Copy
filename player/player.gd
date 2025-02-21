@@ -10,6 +10,7 @@ var shift_toggle := false
 var shift := false
 @export var flash : SpotLight3D
 @export var footstep_audio : AudioStreamPlayer3D
+@export var concrete_audio : AudioStreamPlayer3D
 @export var current_held : String
 var prev_handheld
 var handheld : Node3D
@@ -20,6 +21,10 @@ var slot3
 var in_menu := false
 var in_ingame_menu := false
 var pistol_bullets := 9
+@onready var roofray: RayCast3D = $roofray
+@onready var floorray: RayCast3D = $floorray
+@export var grass : Material
+var on_material
 @onready var item_nodes := {
 	"": null,
 	"gun": $Camera3D/gun,    # Assign in inspector or _ready()
@@ -33,7 +38,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	interact() #test for text
-
+	
 	global_rotation.y = camera.global_rotation.y
 	camera.global_position = Vector3(global_position.x, global_position.y +1.5, global_position.z)
 	if shift == true:
@@ -45,15 +50,30 @@ func _process(delta: float) -> void:
 	else:
 		$Camera3D/RayCast3D/MeshInstance3D.global_position = lerp($Camera3D/RayCast3D/MeshInstance3D.global_position, $Camera3D/RayCast3D/Node3D.global_position, 0.1)
 	$Camera3D/RayCast3D/MeshInstance3D.scale = Vector3.ONE * $Camera3D/RayCast3D/MeshInstance3D.global_position.distance_to($Camera3D.global_position) / 5
-
-	if velocity.length() >= 0.2:
-	# if the footstep audio isn't playing, play the audio
-		if !footstep_audio.playing:
-			footstep_audio.pitch_scale = 1.0
-			var pitch = speed_multiplier * randf_range(0.8, 1.2)
-			footstep_audio.pitch_scale = pitch
-			footstep_audio.play()
+	if floorray.get_collider():
+		if floorray.get_collider().has_method("get_mesh"):
+			if floorray.get_collider().get_mesh() == grass:
+				
+				if velocity.length() >= 0.2:
+				# if the footstep audio isn't playing, play the audio
+					if !footstep_audio.playing:
+						footstep_audio.pitch_scale = 1.0
+						var pitch = speed_multiplier * randf_range(0.8, 1.2)
+						footstep_audio.pitch_scale = pitch
+						footstep_audio.play()
+		else:
+			if velocity.length() >= 0.2:
+				# if the footstep audio isn't playing, play the audio
+				if !concrete_audio.playing:
+					concrete_audio.pitch_scale = 1.0
+					var pitch = speed_multiplier * randf_range(0.8, 1.2)
+					concrete_audio.pitch_scale = pitch
+					concrete_audio.play()
 func _physics_process(delta: float) -> void:
+	if roofray.get_collider() and global_position.distance_to(roofray.get_collision_point()) < 10.0:
+		$AudioStreamPlayer3D2.volume_db = lerp($AudioStreamPlayer3D2.volume_db, -50.0, 0.1)
+	else:
+		$AudioStreamPlayer3D2.volume_db = lerp($AudioStreamPlayer3D2.volume_db, -12.0, 0.1)
 	flash.look_at($Camera3D/RayCast3D/MeshInstance3D.global_position)
 	if is_on_floor() == false:
 		velocity.y += get_gravity().y * delta

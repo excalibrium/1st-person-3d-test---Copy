@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddsb7vaemql4p"]
+[gd_scene load_steps=31 format=3 uid="uid://ddsb7vaemql4p"]
 
 [ext_resource type="Script" uid="uid://b1ao0dhlrpt8x" path="res://title_cam.gd" id="1_013yr"]
 [ext_resource type="Script" uid="uid://cdkgo1br3icui" path="res://player/menu_cursor.gd" id="3_rhgbh"]
 [ext_resource type="Script" uid="uid://dowf6b8wc1dxw" path="res://player/hoverer.gd" id="4_skmiq"]
 [ext_resource type="Texture2D" uid="uid://dc4gqmqv1v8ar" path="res://new.exr" id="5_hafda"]
 [ext_resource type="Script" uid="uid://c8n8uudxcd2x8" path="res://player/button3d.gd" id="6_n1yhu"]
+[ext_resource type="Texture2D" uid="uid://dtr0n3xirvp5r" path="res://slit.png" id="6_tpml5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wodsf"]
 shading_mode = 0
@@ -52,6 +53,117 @@ size = Vector2(3, 3)
 [sub_resource type="ViewportTexture" id="ViewportTexture_hafda"]
 viewport_path = NodePath("Camera3D/PauseUI/Continue/Model/SubViewport")
 
+[sub_resource type="Animation" id="Animation_hafda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:outer_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D2:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.6, 1.825)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D3:transparency")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D4:transparency")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D5:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MeshInstance3D2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_05l2w"]
 resource_name = "starting"
 length = 10.0
@@ -96,149 +208,86 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite3D:transparency")
-tracks/3/interp = 1
+tracks/3/path = NodePath("MeshInstance3D2:rotation")
+tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3, 5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [1.0, 0.1, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D2:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.46667, 9.96667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MeshInstance3D2:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.8, 4.8, 6.8, 7.8, 9.8),
+"times": PackedFloat32Array(1, 3.8, 4.8, 6.8, 7.8, 9.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 3.14159, 0), Vector3(1.5708, 3.14159, 0), Vector3(1.5708, 6.28144, 0), Vector3(1.5708, 6.28144, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("MeshInstance3D2:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 9.43333, 9.96667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.01, 0.01, 0.01), Vector3(0.01, 0.01, 0.01), Vector3(0.01, 0.01, 0.01)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MeshInstance3D2:position")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 1.6, 1.825)]
-}
-
-[sub_resource type="Animation" id="Animation_hafda"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:inner_radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:mesh:outer_radius")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite3D:transparency")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D2:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D2:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.5708, 0, 0)]
-}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MeshInstance3D2:scale")
-tracks/5/interp = 1
+tracks/5/path = NodePath("MeshInstance3D2:position")
+tracks/5/interp = 2
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.01, 0.01, 0.01)]
+"values": [Vector3(0, 1.55, 1.825)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MeshInstance3D2:position")
+tracks/6/path = NodePath("Sprite3D3:transparency")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1, 2, 9.93333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.6, 1.825)]
+"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D4:transparency")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.95, 2, 9.93333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite3D5:transparency")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1, 2, 9.93333, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0, 0.0, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MeshInstance3D2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hafda"]
@@ -290,6 +339,13 @@ sdfgi_y_scale = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_tpml5"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_jqemp"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="SystemFont" id="SystemFont_hafda"]
+font_names = PackedStringArray("Arial")
+font_stretch = 200
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpml5"]
 shading_mode = 0
 
@@ -313,7 +369,7 @@ Mcursor = NodePath("MenuCursor")
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -3)
 debug_shape_custom_color = Color(0.541176, 1, 0, 1)
-debug_shape_thickness = 3
+debug_shape_thickness = 1
 
 [node name="Node3D" type="Node3D" parent="Camera3D/RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -339,6 +395,8 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 2048
 collide_with_areas = true
 collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 1
 
 [node name="MenuCursorSlot" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
@@ -349,10 +407,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 [node name="PauseUI" type="Node3D" parent="Camera3D"]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0.1)
 
-[node name="Exit" type="Node3D" parent="Camera3D/PauseUI" node_paths=PackedStringArray("ingame_ui", "looker", "hitbox", "hoverer", "ray", "cursor", "model")]
+[node name="Exit" type="Node3D" parent="Camera3D/PauseUI" node_paths=PackedStringArray("looker", "hitbox", "hoverer", "ray", "cursor", "model")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.181046, -1.3)
 script = ExtResource("6_n1yhu")
-ingame_ui = NodePath("")
 main_type = "pause"
 looker = NodePath("Model/lkr")
 hitbox = NodePath("Area3D")
@@ -411,11 +468,10 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.251
 mesh = SubResource("QuadMesh_m6xo1")
 skeleton = NodePath("../..")
 
-[node name="Continue" type="Node3D" parent="Camera3D/PauseUI" node_paths=PackedStringArray("animation_player", "ingame_ui", "looker", "hitbox", "hoverer", "ray", "cursor", "model")]
+[node name="Continue" type="Node3D" parent="Camera3D/PauseUI" node_paths=PackedStringArray("animation_player", "looker", "hitbox", "hoverer", "ray", "cursor", "model")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.179169, -1.3)
 script = ExtResource("6_n1yhu")
 animation_player = NodePath("../../../AnimationPlayer")
-ingame_ui = NodePath("")
 main_type = "pause"
 looker = NodePath("Model/lkr")
 hitbox = NodePath("Area3D")
@@ -481,15 +537,24 @@ mesh = SubResource("TorusMesh_05l2w")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_jqemp")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 1.555, 1.875)
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.001, 0, 0, 0, 0.002, 0, 1.625, 1.874)
 transparency = 1.0
-alpha_cut = 1
-texture_filter = 5
+texture = ExtResource("6_tpml5")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 1.6386, 1.875)
+transparency = 1.0
 texture = SubResource("ViewportTexture_tpml5")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(0.002, 0, 0, 0, 0.002, 0, 0, 0, 0.002, 0, 1.6, 1.875)
+transparency = 1.0
+texture = SubResource("ViewportTexture_jqemp")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
+size = Vector2i(3512, 512)
 
 [node name="Label" type="Label" parent="SubViewport"]
 anchors_preset = 8
@@ -497,18 +562,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -67.0
-offset_top = -11.5
-offset_right = 67.0
-offset_bottom = 11.5
+offset_left = -1616.5
+offset_top = -226.0
+offset_right = 1616.5
+offset_bottom = 226.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 24
-text = "hint: this is a hint"
+theme_override_fonts/font = SubResource("SystemFont_hafda")
+theme_override_font_sizes/font_size = 404
+text = "[HINT] What to do"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(12182, 1467)
+
+[node name="Label2" type="Label" parent="SubViewport2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5118.5
+offset_top = -1591.0
+offset_right = 5118.5
+offset_bottom = 1591.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_hafda")
+theme_override_font_sizes/font_size = 379
+text = "The objective is to reach the roof without being detected. Try everything. Nothing can go wrong."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 1.6, 1.825)
+transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 1.6, 1.825)
 visible = false
 mesh = SubResource("TorusMesh_hafda")
