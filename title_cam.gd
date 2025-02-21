@@ -47,4 +47,4 @@ func _process(delta: float) -> void:
 	Mray.look_at(Mcursor.global_position)
 
 func start():
-	get_tree().change_scene_to_file("res://test.tscn")
+	get_tree().change_scene_to_file("res://world.tscn")

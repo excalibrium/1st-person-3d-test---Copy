@@ -1,6 +1,8 @@
 extends Node3D
 @onready var skills_menu: Node3D = $Skills_menu
 @export var slots : Array[Node3D]
+@export var items : Array[Node3D]
+
 @export var backdrop : Node3D
 var open := false
 var menu_type := "Equipment"

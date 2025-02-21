@@ -19,10 +19,14 @@ var slotted := false # bool to check if we are in a slot or not.
 var fillback : bool
 var last_slotted : Node3D #The slot we were in. (Node3D)
 var slotted_in : Node3D #Which slot we are in. (Node3D)
-
+var found := false
 func _ready():
 	$Model/SubViewport/Label.set_text(ability_name)
 func _process(_delta):
+	if found == true:
+		visible = true
+	else:
+		visible = false
 	#if cursor.get_parent().in_menu == false or cursor.main_type != main_type:
 		#switch(false, Type, delta, true)
 	#else:

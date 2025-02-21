@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqr77slunrgtn"]
+[gd_scene load_steps=4 format=3 uid="uid://cqr77slunrgtn"]
+
+[ext_resource type="Script" uid="uid://b302l5oja6q1b" path="res://ladder.gd" id="1_cq4ai"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq4ai"]
 size = Vector3(1, 8, 0.2)
@@ -7,6 +9,7 @@ size = Vector3(1, 8, 0.2)
 size = Vector3(1, 8, 1)
 
 [node name="ladder" type="Node3D"]
+script = ExtResource("1_cq4ai")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 sleeping = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://bahsgptvom4xv"]
+[gd_scene load_steps=50 format=4 uid="uid://bahsgptvom4xv"]
 
 [ext_resource type="Script" uid="uid://8wqsm0bd7y47" path="res://player/player.gd" id="1_bx5sf"]
 [ext_resource type="AudioStream" uid="uid://mnalty6ui7c3" path="res://player/rustling-grass-1-101282.mp3" id="2_i3pqv"]
@@ -23,6 +23,78 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_njdpp"]
 material = SubResource("StandardMaterial3D_wbvrh")
 radial_segments = 32
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kb6p2"]
+viewport_path = NodePath("Camera3D/Dialogue/Sprite3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wodsf"]
+viewport_path = NodePath("Camera3D/Dialogue/Sprite3D2/SubViewport")
+
+[sub_resource type="Animation" id="Animation_kb6p2"]
+resource_name = "approach_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wodsf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_32hag"]
+resource_name = "launched_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wodsf"]
+_data = {
+&"RESET": SubResource("Animation_wodsf"),
+&"approach_1": SubResource("Animation_kb6p2"),
+&"launched_1": SubResource("Animation_32hag")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebec5"]
 shading_mode = 0
@@ -201,6 +273,66 @@ Mcursor = NodePath("MenuCursor")
 rotater = NodePath("..")
 animation_player = NodePath("AnimationPlayer")
 
+[node name="Dialogue" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.60615, -1.94846)
+
+[node name="Sprite3D" type="Sprite3D" parent="Camera3D/Dialogue"]
+transform = Transform3D(0.025, 0, 0, 0, 0.0249914, 0.000654424, 0, -0.000654424, 0.0249914, 0, 1.549, 1.846)
+visible = false
+texture = SubResource("ViewportTexture_kb6p2")
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/Dialogue/Sprite3D"]
+transparent_bg = true
+size = Vector2i(1024, 128)
+
+[node name="Label" type="Label" parent="Camera3D/Dialogue/Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -11.5
+offset_right = 194.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "[AGENT]: what a nice house!!! first time seeing it :D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D2" type="Sprite3D" parent="Camera3D/Dialogue"]
+transform = Transform3D(0.025, 0, 0, 0, 0.0249914, 0.000654424, 0, -0.000654424, 0.0249914, 0, 1.549, 1.846)
+visible = false
+texture = SubResource("ViewportTexture_wodsf")
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D/Dialogue/Sprite3D2"]
+transparent_bg = true
+size = Vector2i(1024, 128)
+
+[node name="Label" type="Label" parent="Camera3D/Dialogue/Sprite3D2/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -194.5
+offset_top = -11.5
+offset_right = 194.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "[AGENT]: AAHHHHSİKTİŞŞŞİİİİİİİİRR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dialoguePlayer" type="AnimationPlayer" parent="Camera3D/Dialogue"]
+libraries = {
+&"": SubResource("AnimationLibrary_wodsf")
+}
+
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -3)
 debug_shape_custom_color = Color(0.541176, 1, 0, 1)
@@ -280,10 +412,11 @@ collide_with_bodies = false
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 
-[node name="InGameUI" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("slots", "backdrop")]
+[node name="InGameUI" type="Node3D" parent="Camera3D" node_paths=PackedStringArray("slots", "items", "backdrop")]
 transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0, 0, -0.3)
 script = ExtResource("6_hg6s5")
 slots = [NodePath("Skills_menu/Slot/S1"), NodePath("Skills_menu/Slot/S2"), NodePath("Skills_menu/Slot/S3")]
+items = [NodePath("Skills_menu/Abilities/ITEM1")]
 backdrop = NodePath("../Ingame_Backdrop")
 
 [node name="Skills" type="Node3D" parent="Camera3D/InGameUI" node_paths=PackedStringArray("ingame_ui", "looker", "hitbox", "hoverer", "ray", "cursor", "model")]

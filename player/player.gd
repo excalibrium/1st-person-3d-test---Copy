@@ -26,6 +26,8 @@ var pistol_bullets := 9
 @export var grass : Material
 @onready var myarea: Area3D = $myarea
 var fly := false
+@onready var dialogue_player: AnimationPlayer = $Camera3D/Dialogue/dialoguePlayer
+var wasted_dialogues : Array[String]
 @onready var item_nodes := {
 	"": null,
 	"gun": $Camera3D/gun,    # Assign in inspector or _ready()
@@ -98,7 +100,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, camerax.x * input_dir.x * 20.0* speed_multiplier, 0.1)
 		velocity.z = lerp(velocity.z, camerax.z * input_dir.x * 20.0*speed_multiplier, 0.1)
 
-	print(input_dir.x)
 	if prev_handheld and prev_handheld != handheld:
 		if prev_handheld.has_method("unequip"):
 			prev_handheld.unequip()
@@ -170,10 +171,6 @@ func update_hand(pressed : int = -1):
 		prev_handheld = handheld
 		handheld = null
 	current_slot = pressed
-	print(current_slot)
-	print(current)
-	print(handheld)
-	print(prev_handheld)
 func update_item():
 	slot1 = camera.ingame_menu.slots[0].get_ability()
 	slot2 = camera.ingame_menu.slots[1].get_ability()
@@ -182,14 +179,25 @@ func update_item():
 	#ability_3 = cam.ingame_menu.slots[2].get_ability()
 	#ult = cam.ingame_menu.slots[3].get_ability()
 func interact():
-	return "interact"
-
+	if raycast.get_collider() and raycast.get_collider().has_method("interacted"):
+		raycast.get_collider().interacted(self)
+		
+func recieve_item(item_code):
+	camera.ingame_menu.items[item_code].found = true
+	
 func _on_myarea_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Ladder"):
 		fly = true
-
-
+	match area.name:
+		"nearing_main":
+			if "approach_1" not in wasted_dialogues:
+				dialogue_player.play("approach_1")
+			wasted_dialogues.append("approach_1")
 func _on_myarea_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Ladder"):
-		print("wow")
 		fly = false
+	match area.name:
+		"nearing_main":
+			if velocity.y > 2:
+				dialogue_player.play("launched_1")
+				wasted_dialogues.append("launched_1")
