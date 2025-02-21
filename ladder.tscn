@@ -1,0 +1,121 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqr77slunrgtn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cq4ai"]
+size = Vector3(1, 8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qe38t"]
+size = Vector3(1, 8, 1)
+
+[node name="ladder" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+sleeping = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.4)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 0)
+radius = 0.1
+height = 8.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)
+radius = 0.1
+height = 8.0
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0.5, 7.08474, 0.048812)
+radius = 0.1
+height = 0.199902
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -0.5, 7.08474, 0.048812)
+radius = 0.1
+height = 0.199902
+
+[node name="bar" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, -0.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar2" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, -1.19209e-07, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar3" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 0.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar4" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 1, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar5" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 1.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar6" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 2, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar7" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 2.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar8" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 3, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar9" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 3.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar10" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 4, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar11" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 4.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar12" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar13" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 5.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar14" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 6, 0)
+radius = 0.1
+height = 1.0
+
+[node name="bar15" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 6.5, 0)
+radius = 0.1
+height = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.4)
+shape = SubResource("BoxShape3D_cq4ai")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D" groups=["Ladder"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+shape = SubResource("BoxShape3D_qe38t")

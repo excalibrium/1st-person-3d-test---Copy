@@ -173,6 +173,12 @@ flash = NodePath("Camera3D/SpotLight3D")
 footstep_audio = NodePath("AudioStreamPlayer3D")
 concrete_audio = NodePath("concrete")
 
+[node name="myarea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="myarea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ilqby")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ilqby")
@@ -682,3 +688,6 @@ target_position = Vector3(0, 30, 0)
 
 [node name="floorray" type="RayCast3D" parent="."]
 target_position = Vector3(0, -0.2, 0)
+
+[connection signal="area_entered" from="myarea" to="." method="_on_myarea_area_entered"]
+[connection signal="area_exited" from="myarea" to="." method="_on_myarea_area_exited"]

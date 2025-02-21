@@ -24,7 +24,8 @@ var pistol_bullets := 9
 @onready var roofray: RayCast3D = $roofray
 @onready var floorray: RayCast3D = $floorray
 @export var grass : Material
-var on_material
+@onready var myarea: Area3D = $myarea
+var fly := false
 @onready var item_nodes := {
 	"": null,
 	"gun": $Camera3D/gun,    # Assign in inspector or _ready()
@@ -37,7 +38,6 @@ func _ready() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	interact() #test for text
 	
 	global_rotation.y = camera.global_rotation.y
 	camera.global_position = Vector3(global_position.x, global_position.y +1.5, global_position.z)
@@ -70,18 +70,35 @@ func _process(delta: float) -> void:
 					concrete_audio.pitch_scale = pitch
 					concrete_audio.play()
 func _physics_process(delta: float) -> void:
+	if fly == true:
+		lock = true
+	elif fly == false:
+		lock = false
 	if roofray.get_collider() and global_position.distance_to(roofray.get_collision_point()) < 10.0:
 		$AudioStreamPlayer3D2.volume_db = lerp($AudioStreamPlayer3D2.volume_db, -50.0, 0.1)
 	else:
 		$AudioStreamPlayer3D2.volume_db = lerp($AudioStreamPlayer3D2.volume_db, -12.0, 0.1)
 	flash.look_at($Camera3D/RayCast3D/MeshInstance3D.global_position)
-	if is_on_floor() == false:
+	if is_on_floor() == false and fly == false:
 		velocity.y += get_gravity().y * delta
 	var input_dir = Input.get_vector("a","d","w","s")
-	reeler.position = (reeler.transform.basis * Vector3(input_dir.x,0.0,input_dir.y)).normalized()
+	if fly == false:
+		reeler.global_position = Vector3.ZERO
+		reeler.position = (reeler.transform.basis * Vector3(input_dir.x,0.0,input_dir.y)).normalized()
+	elif fly == true:
+		reeler.global_position = $Camera3D/RayCast3D/MeshInstance3D.global_position 
 	if lock == false:
 		velocity.x = lerp(velocity.x, (reeler.global_position.x - global_position.x) * 2.0* speed_multiplier, 0.1)
 		velocity.z = lerp(velocity.z, (reeler.global_position.z - global_position.z) * 2.0*speed_multiplier, 0.1)
+	elif fly == true:
+		velocity = lerp(velocity, (reeler.global_position - global_position) * 2.0*speed_multiplier * -input_dir.y, 0.5)
+		var camerax = camera.transform.basis.x
+		camerax.y = 0
+		camerax = camerax.normalized()
+		velocity.x = lerp(velocity.x, camerax.x * input_dir.x * 20.0* speed_multiplier, 0.1)
+		velocity.z = lerp(velocity.z, camerax.z * input_dir.x * 20.0*speed_multiplier, 0.1)
+
+	print(input_dir.x)
 	if prev_handheld and prev_handheld != handheld:
 		if prev_handheld.has_method("unequip"):
 			prev_handheld.unequip()
@@ -112,6 +129,7 @@ func _input(event: InputEvent) -> void:
 		if handheld:
 			handheld.reload()
 	if event.is_action_pressed("shoot") and camera.in_ingame_menu == false and in_menu == false:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		if handheld:
 			handheld.used()
 	if event.is_action_pressed("f") and camera.in_ingame_menu == false and in_menu == false:
@@ -164,8 +182,14 @@ func update_item():
 	#ability_3 = cam.ingame_menu.slots[2].get_ability()
 	#ult = cam.ingame_menu.slots[3].get_ability()
 func interact():
-	if raycast.get_collider() and raycast.get_collider().has_method("interact"):
-		var hit_object = raycast.get_collider()
-		raycast.interact()
+	return "interact"
 
-			
+func _on_myarea_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Ladder"):
+		fly = true
+
+
+func _on_myarea_area_exited(area: Area3D) -> void:
+	if area.is_in_group("Ladder"):
+		print("wow")
+		fly = false

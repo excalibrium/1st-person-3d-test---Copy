@@ -17,12 +17,16 @@ warnings/check_invalid_track_paths=false
 config/name="brackey jam test"
 run/main_scene="uid://ddsb7vaemql4p"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/bg_color=Color(0.0142752, 0.0142752, 0.0142752, 1)
+boot_splash/image="uid://fvpuu1i440vk"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=1000
 
 [global_group]
 
 Player=""
 Menutton=""
+Ladder=""
 
 [input]
 

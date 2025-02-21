@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ddsb7vaemql4p"]
+[gd_scene load_steps=36 format=3 uid="uid://ddsb7vaemql4p"]
 
 [ext_resource type="Script" uid="uid://b1ao0dhlrpt8x" path="res://title_cam.gd" id="1_013yr"]
 [ext_resource type="Script" uid="uid://cdkgo1br3icui" path="res://player/menu_cursor.gd" id="3_rhgbh"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dc4gqmqv1v8ar" path="res://new.exr" id="5_hafda"]
 [ext_resource type="Script" uid="uid://c8n8uudxcd2x8" path="res://player/button3d.gd" id="6_n1yhu"]
 [ext_resource type="Texture2D" uid="uid://dtr0n3xirvp5r" path="res://slit.png" id="6_tpml5"]
+[ext_resource type="Texture2D" uid="uid://c2758ug8maj8o" path="res://sign.png" id="7_jqemp"]
+[ext_resource type="Texture2D" uid="uid://bgohh1p8vym3s" path="res://buzz.png" id="8_013yr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wodsf"]
 shading_mode = 0
@@ -36,19 +38,6 @@ viewport_path = NodePath("Camera3D/PauseUI/Exit/Model/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yan6"]
 size = Vector3(0.45, 0.2, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32hag"]
-specular_mode = 2
-albedo_color = Color(0.788235, 1, 1, 0)
-metallic = 1.0
-metallic_specular = 1.0
-roughness = 0.4
-refraction_enabled = true
-texture_filter = 5
-
-[sub_resource type="QuadMesh" id="QuadMesh_m6xo1"]
-material = SubResource("StandardMaterial3D_32hag")
-size = Vector2(3, 3)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hafda"]
 viewport_path = NodePath("Camera3D/PauseUI/Continue/Model/SubViewport")
@@ -162,6 +151,102 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer/MeshInstance3D3:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.785398)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AnimationPlayer/MeshInstance3D3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 1.4, 1.8)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("AnimationPlayer/MeshInstance3D4:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.9, 1.4, 1.8)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimationPlayer/MeshInstance3D4:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.785398)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Sprite3D2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.737, 1.876)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Sprite3D2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.02, 0.02, 0.02)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Sprite3D:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Sprite3D2:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_05l2w"]
@@ -290,11 +375,147 @@ tracks/9/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_tpml5"]
+resource_name = "initing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/MeshInstance3D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.733333, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.785398), Vector3(0, 0, 0.785398), Vector3(0, 0, 0.785398)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/MeshInstance3D3:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.5),
+"transitions": PackedFloat32Array(1, 4, 1),
+"update": 0,
+"values": [Vector3(-0.5, 1.4, 1.8), Vector3(-0.5, 1.4, 1.8), Vector3(-0.712132, 1.18787, 1.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/MeshInstance3D4:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333, 1.5),
+"transitions": PackedFloat32Array(1, 4, 1),
+"update": 0,
+"values": [Vector3(0.9, 1.4, 1.8), Vector3(0.9, 1.4, 1.8), Vector3(1.11213, 1.61213, 1.8)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/MeshInstance3D4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.785398), Vector3(0, 0, 0.785398)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"initialize"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite3D2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.737, 1.876), Vector3(0, 1.462, 1.876)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprite3D2:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.02, 0.02, 0.02), Vector3(0.02, 0.02, 0.02), Vector3(3.46, 3.46, 3.46)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprite3D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite3D2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hafda"]
 _data = {
 &"RESET": SubResource("Animation_hafda"),
+&"initing": SubResource("Animation_tpml5"),
 &"starting": SubResource("Animation_05l2w")
 }
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqemp"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_013yr"]
+material = SubResource("StandardMaterial3D_jqemp")
+size = Vector2(1, 2.34)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32hag"]
+specular_mode = 2
+albedo_color = Color(0.788235, 1, 1, 0)
+metallic = 1.0
+metallic_specular = 1.0
+roughness = 0.4
+refraction_enabled = true
+texture_filter = 5
+
+[sub_resource type="QuadMesh" id="QuadMesh_m6xo1"]
+material = SubResource("StandardMaterial3D_32hag")
+size = Vector2(3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hafda"]
 shading_mode = 0
@@ -358,13 +579,14 @@ ring_segments = 3
 
 [node name="Title_screen" type="Node3D"]
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("Mlooker", "Mray", "Mcursor")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("Mlooker", "Mray", "Mcursor", "animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60615, 1.94846)
 top_level = true
 script = ExtResource("1_013yr")
 Mlooker = NodePath("MenuLooker")
 Mray = NodePath("MenuRay")
 Mcursor = NodePath("MenuCursor")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -3)
@@ -463,11 +685,6 @@ collision_mask = 2048
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/PauseUI/Exit/Area3D"]
 shape = SubResource("BoxShape3D_7yan6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/PauseUI/Exit"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.2518e-09, 0.181046, 0.0257573)
-mesh = SubResource("QuadMesh_m6xo1")
-skeleton = NodePath("../..")
-
 [node name="Continue" type="Node3D" parent="Camera3D/PauseUI" node_paths=PackedStringArray("animation_player", "looker", "hitbox", "hoverer", "ray", "cursor", "model")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.179169, -1.3)
 script = ExtResource("6_n1yhu")
@@ -529,6 +746,21 @@ shape = SubResource("BoxShape3D_7yan6")
 libraries = {
 &"": SubResource("AnimationLibrary_hafda")
 }
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="AnimationPlayer"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.5, 1.4, 1.8)
+mesh = SubResource("QuadMesh_013yr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="AnimationPlayer"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.9, 1.4, 1.8)
+mesh = SubResource("QuadMesh_013yr")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimationPlayer"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 6.21725e-15, 1.60615, 1.71702)
+mesh = SubResource("QuadMesh_m6xo1")
+skeleton = NodePath("../../Camera3D/PauseUI")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-10, -1, 0, 0.01, -4.37114e-08, 0, 1.6, 1.8)
@@ -601,3 +833,14 @@ autowrap_mode = 3
 transform = Transform3D(0.01, 0, 0, 0, -3.61999e-08, -0.01, 0, 0.01, -3.61999e-08, 0, 1.6, 1.825)
 visible = false
 mesh = SubResource("TorusMesh_hafda")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0, 1.6, 1.8)
+texture_filter = 0
+texture = ExtResource("7_jqemp")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 1.737, 1.876)
+modulate = Color(0.202077, 0.239983, 0.268577, 0.454902)
+texture_filter = 0
+texture = ExtResource("8_013yr")
