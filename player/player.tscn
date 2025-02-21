@@ -32,7 +32,7 @@ viewport_path = NodePath("Camera3D/Dialogue/Sprite3D2/SubViewport")
 
 [sub_resource type="Animation" id="Animation_kb6p2"]
 resource_name = "approach_1"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,10 +40,22 @@ tracks/0/path = NodePath("Sprite3D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 2),
+"times": PackedFloat32Array(0, 0.2, 2.46667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D/SubViewport/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.666667, 0.933333, 1.59, 1.625, 1.63333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.151, 0.151, 0.550712, 0.550712, 0.972187, 0.972187, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_wodsf"]
@@ -72,6 +84,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D/SubViewport/Label:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.151]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite3D2/SubViewport/Label:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.29]
+}
 
 [sub_resource type="Animation" id="Animation_32hag"]
 resource_name = "launched_1"
@@ -87,6 +123,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D2/SubViewport/Label:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.29, 0.29, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wodsf"]
@@ -284,6 +332,7 @@ texture = SubResource("ViewportTexture_kb6p2")
 [node name="SubViewport" type="SubViewport" parent="Camera3D/Dialogue/Sprite3D"]
 transparent_bg = true
 size = Vector2i(1024, 128)
+render_target_update_mode = 4
 
 [node name="Label" type="Label" parent="Camera3D/Dialogue/Sprite3D/SubViewport"]
 anchors_preset = 8
@@ -301,6 +350,8 @@ theme_override_font_sizes/font_size = 25
 text = "[AGENT]: what a nice house!!! first time seeing it :D"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 8
+visible_ratio = 0.151
 
 [node name="Sprite3D2" type="Sprite3D" parent="Camera3D/Dialogue"]
 transform = Transform3D(0.025, 0, 0, 0, 0.0249914, 0.000654424, 0, -0.000654424, 0.0249914, 0, 1.549, 1.846)
@@ -310,6 +361,7 @@ texture = SubResource("ViewportTexture_wodsf")
 [node name="SubViewport" type="SubViewport" parent="Camera3D/Dialogue/Sprite3D2"]
 transparent_bg = true
 size = Vector2i(1024, 128)
+render_target_update_mode = 4
 
 [node name="Label" type="Label" parent="Camera3D/Dialogue/Sprite3D2/SubViewport"]
 anchors_preset = 8
@@ -327,6 +379,8 @@ theme_override_font_sizes/font_size = 25
 text = "[AGENT]: AAHHHHSİKTİŞŞŞİİİİİİİİRR"
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 9
+visible_ratio = 0.29
 
 [node name="dialoguePlayer" type="AnimationPlayer" parent="Camera3D/Dialogue"]
 libraries = {
