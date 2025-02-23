@@ -1,6 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqr77slunrgtn"]
+[gd_scene load_steps=8 format=3 uid="uid://cqr77slunrgtn"]
 
 [ext_resource type="Script" uid="uid://b302l5oja6q1b" path="res://ladder.gd" id="1_cq4ai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq4ai"]
+albedo_color = Color(0.817816, 0.220853, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqhsa"]
+albedo_color = Color(0.817816, 0.220853, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efw3x"]
+albedo_color = Color(0.716296, 0.716296, 0.716296, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kgug"]
+albedo_color = Color(0.716296, 0.716296, 0.716296, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cq4ai"]
 size = Vector3(1, 8, 0.2)
@@ -21,96 +33,130 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.4)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 3, 0)
 radius = 0.1
 height = 8.0
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)
 radius = 0.1
 height = 8.0
+material = SubResource("StandardMaterial3D_lqhsa")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0.5, 7.08474, 0.048812)
 radius = 0.1
 height = 0.199902
+material = SubResource("StandardMaterial3D_efw3x")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, -0.5, 7.08474, 0.048812)
 radius = 0.1
 height = 0.199902
+material = SubResource("StandardMaterial3D_3kgug")
 
 [node name="bar" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, -0.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar2" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, -1.19209e-07, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar3" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 0.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar4" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 1, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar5" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 1.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar6" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 2, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar7" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 2.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar8" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 3, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar9" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 3.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar10" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 4, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar11" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 4.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar12" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar13" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 5.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar14" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.31134e-07, 6, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="bar15" type="CSGCylinder3D" parent="RigidBody3D/CSGCombiner3D"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5299e-07, 6.5, 0)
 radius = 0.1
 height = 1.0
+sides = 6
+material = SubResource("StandardMaterial3D_cq4ai")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0.4)

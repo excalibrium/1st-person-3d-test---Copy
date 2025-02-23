@@ -42,10 +42,10 @@ func _process(delta: float) -> void:
 		Mcursor.global_position = $MenuCursorSlot.global_position
 	
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("ui_cancel") and get_parent().menu_lock == false:
 			menu_pressed()
 	if in_menu == false:
-		if Input.is_action_just_pressed("tab"):
+		if Input.is_action_just_pressed("tab") and get_parent().menu_lock == false:
 			in_game_menu_pressed("Skills")
 	if event is InputEventMouseMotion:
 		mouse_time = 0
@@ -87,3 +87,10 @@ func in_game_menu_pressed(type: String):
 	match type:
 		"Skills":
 			ingame_menu.change_type(type, null)
+
+func start():
+	get_tree().change_scene_to_file("res://world.tscn")
+
+func full_reset():
+	Global.deaths = 0
+	get_tree().change_scene_to_file("res://title_screen.tscn")

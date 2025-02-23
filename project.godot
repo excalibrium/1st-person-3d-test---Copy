@@ -22,6 +22,10 @@ boot_splash/image="uid://fvpuu1i440vk"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=1000
 
+[autoload]
+
+Global="*res://global.gd"
+
 [global_group]
 
 Player=""

@@ -123,4 +123,5 @@ subdivide_depth = 64
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.607, 0, 0, 0, 1, 0, 0, 0, 1.471, 0, 22.9, 0)
+extra_cull_margin = 1000.0
 mesh = SubResource("PlaneMesh_83qov")

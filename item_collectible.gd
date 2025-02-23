@@ -4,6 +4,3 @@ extends StaticBody3D
 func interacted(player):
 	player.recieve_item(item_code)
 	queue_free()
-
-#0 : gun
-#1 : 

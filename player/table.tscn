@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmiirfb7u7hg1"]
+
+[ext_resource type="Material" uid="uid://ceect8hlc30o3" path="res://wood.tres" id="1_1slab"]
+
+[node name="table" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+radius = 1.0
+height = 0.05
+sides = 12
+material = ExtResource("1_1slab")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, -0.5, 0)
+radius = 0.05
+height = 1.0
+sides = 6
+material = ExtResource("1_1slab")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -0.5, 0)
+radius = 0.05
+height = 1.0
+sides = 6
+material = ExtResource("1_1slab")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.1, -0.5, 0.7)
+radius = 0.05
+height = 1.0
+sides = 6
+material = ExtResource("1_1slab")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.1, -0.5, -0.7)
+radius = 0.05
+height = 1.0
+sides = 6
+material = ExtResource("1_1slab")

@@ -9,13 +9,15 @@ var primed := false
 @export var ray_cast_3d3: RayCast3D
 @export var ray_cast_3d4: RayCast3D
 @export var ray_cast_3d5: RayCast3D
-var bullets := 8
+var bullets := 0
 var target_position: Vector3
 @onready var sprite_3d: Sprite3D = $Sprite3D
 var sprite_3d_original_position : Vector3
 var show_ammo_timer := 0.0
+@export var gunray : RayCast3D
 
 func _ready() -> void:
+	bullets = Global.deaths
 	sprite_3d.position.z -= 0.25
 	sprite_3d_original_position = sprite_3d.position
 	update_ammo()
@@ -26,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	if show_ammo_timer >= 3.0 and show_ammo_timer < 5.0:
 		hide_ammo()
 	sprite_3d.look_at(owner.camera.global_position)
-	rotation_degrees.x = lerpf(rotation_degrees.x, 0.0, 10.0 * delta)
+	#rotation_degrees.x = lerpf(rotation_degrees.x, 0.0, 10.0 * delta)
 	if ray_cast_3d5.get_collider() and ray_cast_3d5.get_collider() is not PlayerController:
 		target_position = Vector3(0.45, -0.3, -1.1) + Vector3(0, 0, clamp(2.0 - ray_cast_3d5.get_collision_point().distance_to(self.global_position), 0, 2.0) * 0.8)
 	else:
@@ -43,7 +45,7 @@ func _physics_process(delta: float) -> void:
 						target_position = Vector3(0.45, -0.3, -1.1) + Vector3(0, 0, clamp(2.0 - ray_cast_3d.get_collision_point().distance_to(self.global_position), 0, 2.0) * 0.8)
 					else:
 						target_position = Vector3(0.45, -0.3, -1.1)
-	position = position.lerp(target_position, delta * 20.0)
+	#position = position.lerp(target_position, delta * 20.0)
 func used():
 	show_ammo()
 	if lock == false:
@@ -58,18 +60,15 @@ func used():
 func recoil():
 	$AudioStreamPlayer3D.pitch_scale = randf_range(1.0,1.2)
 	$AudioStreamPlayer3D.play(0.33)
-	print($"../GunRay".get_collision_point())
-	print($"../GunRay".get_collision_normal())
-	create_impact_decal($"../GunRay".get_collision_point(), $"../GunRay".get_collision_normal(), $"../GunRay".get_collider())
-	print($"../GunRay".get_collider())
-	if $"../GunRay".get_collider() and $"../GunRay".get_collider().has_method("shot"):
-		$"../GunRay".get_collider().shot()
+	create_impact_decal(gunray.get_collision_point(), gunray.get_collision_normal(), gunray.get_collider())
+	if gunray.get_collider() and gunray.get_collider().has_method("shot"):
+		gunray.get_collider().shot(owner)
 	flash.rotation_degrees.z = randf_range(-360.0, 360.0)
 	flash.visible = true
 	$GPUParticles3D.restart()
 	$GPUParticles3D.emitting = true
 	$GPUParticles3D.restart()
-	rotation_degrees.x -= 15.0
+	#rotation_degrees.x -= 15.0
 	bullets -= 1
 	update_ammo()
 func update_ammo():

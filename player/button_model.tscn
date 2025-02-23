@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dktgmd7nvh84y"]
+
+[ext_resource type="Script" uid="uid://p1gvfkqyvwid" path="res://player/button.gd" id="1_ixdqq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jv2qe"]
+albedo_color = Color(0.501407, 0.501406, 0.501406, 1)
+metallic = 0.57
+metallic_specular = 0.66
+roughness = 0.62
+
+[sub_resource type="BoxMesh" id="BoxMesh_jv2qe"]
+material = SubResource("StandardMaterial3D_jv2qe")
+size = Vector3(0.3, 0.1, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixdqq"]
+albedo_color = Color(0.807843, 0.14902, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bk1o3"]
+material = SubResource("StandardMaterial3D_ixdqq")
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+radial_segments = 8
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bk1o3"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="SystemFont" id="SystemFont_ktave"]
+font_names = PackedStringArray("Impact")
+
+[node name="button_model" type="Node3D"]
+script = ExtResource("1_ixdqq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jv2qe")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_bk1o3")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, 0.150368, 1.06532e-09)
+modulate = Color(1, 0.380392, 0.309804, 1)
+texture = SubResource("ViewportTexture_bk1o3")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+transparent_bg = true
+size = Vector2i(1135, 197)
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_ktave")
+theme_override_font_sizes/font_size = 200
+text = "DO NOT TOUCH"
+horizontal_alignment = 1
+vertical_alignment = 1
